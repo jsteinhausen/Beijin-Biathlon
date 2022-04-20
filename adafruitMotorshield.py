@@ -4,7 +4,7 @@ from adafruit_motorkit import MotorKit
 class AdafruitDCMotor:
     motorSpeed=1.0
     def __init__(self):
-        self.kit = MotorKit(i2c=board.I2C())
+        self.kit = self.MotorKit(i2c=board.I2C())
         #Uses the first motor of the motor kit as a default
         self.dcMotor=self.kit.motor3
 
