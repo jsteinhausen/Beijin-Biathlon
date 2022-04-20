@@ -12,7 +12,7 @@ client = textlinenetclient.TextLineNetClient(host,port)
 client.sendCmd('norsp vfmts "*" dec 0 0 0 0 0 0')
 
 # Parameters
-pin    = 8  # GPIO pin (0..15)
+pin = 8  # GPIO pin (0..15)
 output = 1  # Output state (0 or 1)
 
 while True:

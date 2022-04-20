@@ -6,7 +6,7 @@ class AdafruitDCMotor:
     motorSpeed=1.0
     def __init__(self):
         #Uses the first motor of the motor kit as a default
-        self.dcMotor=self.kit.motor1
+        self.dcMotor=self.kit.motor3
 
         self.dcMotor.throttle = 0
 
