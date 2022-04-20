@@ -1,13 +1,12 @@
 import board
 from adafruit_motorkit import MotorKit
-#kit = MotorKit(i2c=board.I2C())
 
 class AdafruitDCMotor:
     motorSpeed=1.0
     def __init__(self):
-        kit = MotorKit(i2c=board.I2C())
+        self.kit = MotorKit(i2c=board.I2C())
         #Uses the first motor of the motor kit as a default
-        self.dcMotor=kit.motor3
+        self.dcMotor=self.kit.motor3
 
         self.dcMotor.throttle = 0
 
@@ -44,6 +43,7 @@ class AdafruitStepper:
         self.distanceOneMicrostep=distanceOneMicrostep
 
         self.stepperMotor=self.kit.stepper1
+
         self.stepperMotor.release()
         self.stepperMotorStyle=self.stepper.SINGLE
 
