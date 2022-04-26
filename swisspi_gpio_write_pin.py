@@ -1,7 +1,7 @@
 import textlinenetclient
 
 # Host and port of Swiss Server. Change as needed e.g. host '192.168.1.110'.
-host = '192.168.1.20'
+host = '192.168.1.119'
 port = 5003
 
 # Connect to Swiss Server
@@ -11,7 +11,7 @@ client = textlinenetclient.TextLineNetClient(host,port)
 client.sendCmd('norsp vfmts "*" dec 0 0 0 0 0 0')
 
 # Parameters
-pin    = 8  # GPIO pin (0..15)
+pin= 1  # GPIO pin (0..15)
 output = 1  # Output state (0 or 1)
 
 # Write output state of GPIO pin
