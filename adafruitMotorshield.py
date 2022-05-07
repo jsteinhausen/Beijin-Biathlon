@@ -33,7 +33,7 @@ class AdafruitDCMotor:
         self.dcMotor.throttle = self.motorSpeed
 
     def backward(self):
-        self.parent.throttle=-self.motorSpeed
+        self.dcMotor.throttle=-self.motorSpeed
 
     #The motor can be moved without any resistance
     def release(self):
@@ -56,7 +56,7 @@ class AdafruitStepper:
         self.stepperMotor=adafruitMotorShield.kit.stepper1
 
         self.stepperMotor.release()
-        self.stepperMotorStyle=self.stepper.SINGLE
+        self.stepperMotorStyle=self.stepperMotor.SINGLE
 
     def oneStepForward(self):
         self.stepperMotor.onestep(direction=self.stepper.FORWARD,style=self.stepperMotorStyle)
