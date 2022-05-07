@@ -6,7 +6,7 @@ class AdafruitMotorShield:
         self.kit = MotorKit(i2c=board.I2C())
 
     def createDCMotor(self):
-        self.dcMotor=AdafruitDCMotor()
+        self.adafruitDCMotor=AdafruitDCMotor(self)
 
 
     def createStepperMotor(self):
@@ -14,32 +14,32 @@ class AdafruitMotorShield:
         return self.stepperMotor
 
 
-class AdafruitDCMotor(AdafruitMotorShield):
+class AdafruitDCMotor:
     motorSpeed=1.0
-    def __init__(self):
+    def __init__(self,adafruitMotorShield):
         #Uses the first motor of the motor kit as a default
-        self.parent.dcMotor=self.parent.kit.motor3
+        self.dcMotor=adafruitMotorShield.kit.motor3
 
-        self.parent.dcMotor.throttle = 0
+        self.dcMotor.throttle = 0
 
 
     #Holds the motor in a certain position
     def stop(self):
-        self.parent.dcMotor.throttle = 0
+        self.dcMotor.throttle = 0
 
     #Max Speed is 1
     def setMotorDCSpeed(self,motorSpeed):
-        self.parent.dcMotor=motorSpeed
+        self.dcMotor=motorSpeed
 
     def forward(self):
-        self.parent.dcMotor.throttle = self.motorSpeed
+        self.dcMotor.throttle = self.motorSpeed
 
     def backward(self):
-        self.parent.dcMotor.throttle=-self.motorSpeed
+        self.parent.throttle=-self.motorSpeed
 
     #The motor can be moved without any resistance
     def release(self):
-        self.parent.dcMotor.throttle= None
+        self.dcMotor.throttle= None
 
 
 

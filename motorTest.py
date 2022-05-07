@@ -1,9 +1,10 @@
 import adafruitMotorshield
+from adafruitMotorshield import AdafruitMotorShield
 import time
 
 shield=adafruitMotorshield.AdafruitMotorshield()
 shield.createDCMotor()
 
-shield.dcMotor.forward()
+shield.adafruitDCMotor.dcMotor.forward()
 time.sleep(2)
-shield.dcMotor.stop()
+shield.adafruitDCMotor.dcMotor.stop()
