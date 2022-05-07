@@ -56,7 +56,8 @@ class AdafruitStepper:
         self.distanceOneMicrostep=distanceOneMicrostep
         self.stepperMotor=adafruitMotorShield.kit.stepper1
         self.stepperMotor.release()
-        self.stepperMotorStyle=adafruit_motor.stepper.SINGLE
+        self.stepper=adafruit_motor.stepper
+        self.stepperMotorStyle=self.stepper.SINGLE
 
     def oneStepForward(self):
         self.stepperMotor.onestep(direction=self.stepper.FORWARD,style=self.stepperMotorStyle)
