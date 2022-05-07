@@ -6,7 +6,7 @@ class AdafruitMotorShield:
         self.kit = MotorKit(i2c=board.I2C())
 
     def createDCMotor(self):
-        AdafruitDCMotor()
+        self.dcMotor=AdafruitDCMotor()
 
 
     def createStepperMotor(self):
