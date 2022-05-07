@@ -6,45 +6,45 @@ class AdafruitMotorShield:
         self.kit = MotorKit(i2c=board.I2C())
 
     def createDCMotor(self):
-        self.dcMotor=AdafruitDCMotor()
-        return self.dcMotor
+        AdafruitDCMotor()
+
 
     def createStepperMotor(self):
         self.stepperMotor=AdafruitStepper()
         return self.stepperMotor
 
 
-class AdafruitDCMotor:
+class AdafruitDCMotor(AdafruitMotorShield):
     motorSpeed=1.0
     def __init__(self):
         #Uses the first motor of the motor kit as a default
-        self.dcMotor=self.kit.motor3
+        self.parent.dcMotor=self.parent.kit.motor3
 
-        self.dcMotor.throttle = 0
+        self.parent.dcMotor.throttle = 0
 
 
     #Holds the motor in a certain position
     def stop(self):
-        self.dcMotor.throttle = 0
+        self.parent.dcMotor.throttle = 0
 
     #Max Speed is 1
     def setMotorDCSpeed(self,motorSpeed):
-        self.motorSpeed=motorSpeed
+        self.parent.dcMotor=motorSpeed
 
     def forward(self):
-        self.dcMotor.throttle = self.motorSpeed
+        self.parent.dcMotor.throttle = self.motorSpeed
 
     def backward(self):
-        self.dcMotor.throttle=-self.motorSpeed
+        self.parent.dcMotor.throttle=-self.motorSpeed
 
     #The motor can be moved without any resistance
     def release(self):
-        self.dcMotor.throttle= None
+        self.parent.dcMotor.throttle= None
 
 
 
     """Using adafruit_motorkit with a stepper motor"""
-class AdafruitStepper:
+class AdafruitStepper(AdafruitMotorShield):
 
     distanceTraveled=0
     stepsMade = 0.0
@@ -54,7 +54,7 @@ class AdafruitStepper:
         #Attributes is the result of distanceOneStep by 8
         self.distanceOneMicrostep=distanceOneMicrostep
 
-        self.stepperMotor=self.kit.stepper1
+        self.stepperMotor=self.parent.kit.stepper1
 
         self.stepperMotor.release()
         self.stepperMotorStyle=self.stepper.SINGLE
