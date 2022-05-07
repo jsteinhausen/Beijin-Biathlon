@@ -53,7 +53,7 @@ class AdafruitStepper:
         #Attributes is the result of distanceOneStep by 8
         self.distanceOneMicrostep=distanceOneMicrostep
 
-        self.stepperMotor=self.adafruitMotorShield.kit.stepper1
+        self.stepperMotor=adafruitMotorShield.kit.stepper1
 
         self.stepperMotor.release()
         self.stepperMotorStyle=self.stepper.SINGLE
