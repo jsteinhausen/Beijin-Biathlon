@@ -7,7 +7,8 @@ shield.createStepperMotor(1.8,6.0,0.1)
 #for i in range(shield.adafruitStepperMotor.distance2steps(100)):
 while True:
     shield.adafruitStepperMotor.oneStepForward()
-    time.sleep(0.0005)
+    #0.001 is stable
+    time.sleep(0.0009)
 
 shield.adafruitStepperMotor.stepperMotor.release()
 print(shield.adafruitStepperMotor.stepsMade)
