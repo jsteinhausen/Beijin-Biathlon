@@ -1,8 +1,7 @@
 import adafruitMotorshield
-from adafruitMotorshield import AdafruitMotorShield
 import time
 
-shield=adafruitMotorshield.AdafruitMotorshield()
+shield=adafruitMotorshield.AdafruitMotorShield()
 shield.createDCMotor()
 
 shield.adafruitDCMotor.dcMotor.forward()

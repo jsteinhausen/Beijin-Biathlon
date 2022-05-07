@@ -44,7 +44,7 @@ class AdafruitDCMotor:
 
 
     """Using adafruit_motorkit with a stepper motor"""
-class AdafruitStepper():
+class AdafruitStepper:
 
     distanceTraveled=0
     stepsMade = 0.0
