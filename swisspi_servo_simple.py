@@ -17,7 +17,7 @@ client.sendCmd('norsp svmd')
 client.sendCmd('norsp ppw 121')
 
 # Set up servo channels
-client.sendCmd('norsp svcw 0 118 515 1000')
+#client.sendCmd('norsp svcw 0 118 515 1000')
 client.sendCmd('norsp svcw 1 122 520 0')
 
 # Enable servo mode
