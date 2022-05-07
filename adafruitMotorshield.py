@@ -9,10 +9,8 @@ class AdafruitMotorShield:
         self.adafruitDCMotor=AdafruitDCMotor(self)
 
 
-    def createStepperMotor(self):
-        self.stepperMotor=AdafruitStepper()
-        return self.stepperMotor
-
+    def createStepperMotor(self,stepAngle,diametre,distanceOneMicrostep):
+        self.adafruitStepperMotor=AdafruitStepper(self,stepAngle,diametre,distanceOneMicrostep)
 
 class AdafruitDCMotor:
     motorSpeed=1.0
@@ -48,13 +46,14 @@ class AdafruitStepper:
 
     distanceTraveled=0
     stepsMade = 0.0
-    def __init__(self,distanceOneStep,distanceOneMicrostep):
+    def __init__(self,adafruitMotorShield,stepAngle,diametre,distanceOneMicrostep):
         #This Attribute needs to be calculate with the size of the Wheel
-        self.distanceOneStep=distanceOneStep
+        self.distanceOneStep=stepAngle*diametre
+        self.nbStepsRound=360/stepAngle
         #Attributes is the result of distanceOneStep by 8
         self.distanceOneMicrostep=distanceOneMicrostep
 
-        self.stepperMotor=self.parent.kit.stepper1
+        self.stepperMotor=self.adafruitMotorShield.kit.stepper1
 
         self.stepperMotor.release()
         self.stepperMotorStyle=self.stepper.SINGLE
@@ -82,7 +81,12 @@ class AdafruitStepper:
     def resetDistanceTraveled(self):
         self.distanceTraveled=0
 
-    def resetDistanceTraveled(self):
+    def resetstepsMade(self):
         self.stepsMade=0
+    def distance2steps (self,distance):
+        #print('calcul distance en angle')
+        nbSteps=(round(distance/self.distanceOneStep))
+        print('For distance %d the stepper needs %i steps', (distance,nbSteps))
+        return nbSteps
 
 
