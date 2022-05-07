@@ -1,4 +1,4 @@
-import adafruit_motorkit
+import adafruit_motor.stepper
 import board
 from adafruit_motorkit import MotorKit
 
@@ -54,11 +54,9 @@ class AdafruitStepper:
         self.nbStepsRound=360/stepAngle
         #Attributes is the result of distanceOneStep by 8
         self.distanceOneMicrostep=distanceOneMicrostep
-
         self.stepperMotor=adafruitMotorShield.kit.stepper1
-
         self.stepperMotor.release()
-        self.stepperMotorStyle=adafruit_motorkit.stepper.SINGLE
+        self.stepperMotorStyle=adafruit_motor.stepper.SINGLE
 
     def oneStepForward(self):
         self.stepperMotor.onestep(direction=self.stepper.FORWARD,style=self.stepperMotorStyle)
