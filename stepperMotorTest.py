@@ -2,7 +2,7 @@ import adafruitMotorshield
 import time
 
 shield=adafruitMotorshield.AdafruitMotorShield()
-shield.createStepperMotor(1.8,6,((1.8/8)*6))
+shield.createStepperMotor(1.8,6.0,0.1)
 
 for i in range(shield.adafruitStepperMotor.distance2steps(10)):
     shield.adafruitStepperMotor.oneStepForward()

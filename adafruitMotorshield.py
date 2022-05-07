@@ -1,5 +1,7 @@
+import adafruit_motorkit
 import board
 from adafruit_motorkit import MotorKit
+
 
 class AdafruitMotorShield:
     def __init__(self):
@@ -56,7 +58,7 @@ class AdafruitStepper:
         self.stepperMotor=adafruitMotorShield.kit.stepper1
 
         self.stepperMotor.release()
-        self.stepperMotorStyle=self.stepperMotor.SINGLE
+        self.stepperMotorStyle=adafruit_motorkit.stepper.SINGLE
 
     def oneStepForward(self):
         self.stepperMotor.onestep(direction=self.stepper.FORWARD,style=self.stepperMotorStyle)
