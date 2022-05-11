@@ -1,5 +1,5 @@
+import math
 import time
-
 import adafruit_motor.stepper
 import board
 from adafruit_motorkit import MotorKit
@@ -53,7 +53,7 @@ class AdafruitStepper:
     stepsMade = 0.0
     def __init__(self,adafruitMotorShield,stepAngle,diametre,distanceOneMicrostep):
         #This Attribute needs to be calculate with the size of the Wheel
-        self.distanceOneStep=stepAngle*diametre
+        self.distanceOneStep=math.radians(stepAngle)*diametre
         self.nbStepsRound=360/stepAngle
         #Attributes is the result of distanceOneStep by 8
         self.distanceOneMicrostep=distanceOneMicrostep
