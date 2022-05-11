@@ -90,7 +90,7 @@ class AdafruitStepper:
     def distance2steps (self,distance):
         #print('calcul distance en angle')
         nbSteps=(round(distance/self.distanceOneStep))
-        print('For distance '+ distance+ ' the stepper needs '+nbSteps+' steps')
+        print('For distance '+ str(distance)+ ' the stepper needs ' +str(nbSteps)+ ' steps')
         return nbSteps
     def moveDistance(self,distance):
         nbSteps=self.distance2steps(distance)
