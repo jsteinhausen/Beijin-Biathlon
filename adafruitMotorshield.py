@@ -96,7 +96,7 @@ class AdafruitStepper:
         nbSteps=distance
         if nbSteps>=0:
             for i in range(abs(nbSteps)):
-                self.oneMicroStepForward()
+                self.oneStepForward()
                 time.sleep(self.stepperSpeed)
         else:
             for i in range(abs(nbSteps)):
