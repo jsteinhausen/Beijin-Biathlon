@@ -93,14 +93,14 @@ class AdafruitStepper:
         print('For distance '+ distance+ ' the stepper needs '+nbSteps+' steps')
         return nbSteps
     def moveDistance(self,distance):
-        nbSteps=distance
+        nbSteps=self.distance2steps(distance)
         if nbSteps>=0:
             for i in range(abs(nbSteps)):
                 self.oneStepForward()
                 time.sleep(self.stepperSpeed)
         else:
             for i in range(abs(nbSteps)):
-                self.oneMicroStepBackward()
+                self.oneStepBackward()
                 time.sleep(self.stepperSpeed)
 
     def changeSpeed(self,speed):
