@@ -20,10 +20,10 @@ while True:
      time.sleep(0.00001)
      gp.output(16,False)
      while gp.input(15)==0:
-       st=time()
+       st=time.time()
        #print(st,"\n")
      while gp.input(15)==1:
-       sto=time()
+       sto=time.time()
        #print(sto)
      tt=sto-st
      dist=(tt*35124)/2 # in place of 35124 enter your spped of sound on basis of tempreature
