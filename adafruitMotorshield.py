@@ -1,3 +1,5 @@
+import time
+
 import adafruit_motor.stepper
 import board
 from adafruit_motorkit import MotorKit
@@ -45,7 +47,8 @@ class AdafruitDCMotor:
 
     """Using adafruit_motorkit with a stepper motor"""
 class AdafruitStepper:
-
+    DEFAULT_STEPPER_SPEED=0.001
+    stepperSpeed=DEFAULT_STEPPER_SPEED
     distanceTraveled=0
     stepsMade = 0.0
     def __init__(self,adafruitMotorShield,stepAngle,diametre,distanceOneMicrostep):
@@ -87,7 +90,29 @@ class AdafruitStepper:
     def distance2steps (self,distance):
         #print('calcul distance en angle')
         nbSteps=(round(distance/self.distanceOneStep))
-        print('For distance %d the stepper needs %i steps', (distance,nbSteps))
+        print('For distance '+ distance+ ' the stepper needs '+nbSteps+' steps')
         return nbSteps
+    def moveDistance(self,distance):
+        nbSteps=distance
+        if nbSteps>=0:
+            for i in range(abs(nbSteps)):
+                self.oneMicroStepForward()
+                time.sleep(self.stepperSpeed)
+        else:
+            for i in range(abs(nbSteps)):
+                self.oneMicroStepBackward()
+                time.sleep(self.stepperSpeed)
+
+    def changeSpeed(self,speed):
+        if speed>=self.DEFAULT_STEPPER_SPEED:
+            self.stepperSpeed=speed
+        else:
+            self.DEFAULT_STEPPER_SPEED
+
+
+
+
+
+
 
 
