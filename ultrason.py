@@ -32,22 +32,11 @@ class Ultrason:
             print("distance est de", dist)
         return dist
 
+sensor=Ultrason()
+while True:
+        try:
+          print(sensor.DistUltrason())
 
-    #while True:
-        #try:
-         #gp.output(16,True) #initialisation du capteur
-         #sleep(0.00001)
-         #gp.output(16,False)
-         #while gp.input(15)==0:
-          # st=time()
-           #print(st,"\n")
-         #while gp.input(15)==1:
-          # sto=time()
-           #print(sto)
-           #tt=sto-st
-           #dist=(tt*35124)/2 # in place of 35124 enter your spped of sound on basis of tempreature
-           #dist=round(dist,3)
-           #print("distance est de",dist)
-        #except KeyboardInterrupt:
-         #   gp.cleanup()
-          #  break
+        except KeyboardInterrupt:
+          gp.cleanup()
+        break
