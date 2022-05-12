@@ -34,9 +34,4 @@ class Ultrason:
 
 sensor=Ultrason()
 while True:
-        try:
-          print(sensor.DistUltrason())
-
-        except KeyboardInterrupt:
-          gp.cleanup()
-        break
+        print(sensor.DistUltrason())
