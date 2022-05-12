@@ -29,9 +29,9 @@ class Ultrason:
             tt = sto - st
             dist = (tt * 35124) / 2  # ici la vitesse du son et donné en cm/s et donc dist en cm
             dist = round(dist, 3)    #rounding nach dem dritten zahl nach dem komma ?
-            print("distance est de", dist)
+            #print("distance est de", dist)
         return dist
 
 sensor=Ultrason()
-
-print(sensor.DistUltrason())
+while True:
+  print(sensor.DistUltrason())
