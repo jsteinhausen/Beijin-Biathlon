@@ -7,10 +7,10 @@ gp.setup(16,gp.OUT)
 gp.setup(15,gp.IN)
 #lcd.display("Measuring",1,4)
 #lcd.display("Distance",2,4)
-time.sleep(1)
+sleep(1)
 #lcd.clear()
 gp.output(16,gp.LOW)
-time.sleep(0.000002)
+sleep(0.000002)
 global st,sto
 #lcd.display("Distance:",1,1)
 
@@ -21,10 +21,10 @@ class Ultrason:
         sleep(0.00001)
         gp.output(16, False)
         while gp.input(15) == 0:
-            st = time.time()         #start time of the impulsion
+            st = time()         #start time of the impulsion
             # print(st,"\n")
         while gp.input(15) == 1:
-            sto = time.time()        #stop time of the impulsion
+            sto = time()        #stop time of the impulsion
             #print(sto)
             tt = sto - st
             dist = (tt * 35124) / 2  # ici la vitesse du son et donné en cm/s et donc dist en cm
