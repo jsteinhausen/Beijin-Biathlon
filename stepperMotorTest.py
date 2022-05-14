@@ -7,7 +7,7 @@ shield.adafruitStepperMotor.stepperSpeed=0.003
 
 #for i in range(shield.adafruitStepperMotor.distance2steps(100)):
 
-shield.adafruitStepperMotor.moveDistance(-100)
+shield.adafruitStepperMotor.moveDistance(400)
     #0.001 is perfect
     #0.0009 is stable
     #0.0008 is stable
