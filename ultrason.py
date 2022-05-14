@@ -32,6 +32,4 @@ class Ultrason:
             #print("distance est de", dist)
         return dist
 
-sensor=Ultrason()
-while True:
-  print(sensor.DistUltrason())
+
