@@ -17,9 +17,9 @@ global st,sto
 class Ultrason:
 
     def DistUltrason(self):
-        gp.output(16, True)  #initialisation du capteur
+        gp.output(16, gp.HIGH)  #initialisation du capteur
         sleep(0.00001)
-        gp.output(16, False)
+        gp.output(16, gp.LOW)
         while gp.input(15) == 0:
             st = time()         #start time of the impulsion
             # print(st,"\n")
