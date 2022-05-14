@@ -33,3 +33,6 @@ class Ultrason:
         return dist
 
 
+sensor=Ultrason()
+while True:
+  print(sensor.DistUltrason())
