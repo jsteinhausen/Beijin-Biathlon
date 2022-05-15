@@ -16,6 +16,15 @@ global st,sto
 
 class Ultrason:
 
+    def _init_(self,pin_in,pin_out):
+        self.gp.setmode(gp.BOARD)
+        self.gp.setup(self.pin_out, gp.OUT)
+        self.gp.setup(self.pin_in, gp.IN)
+        sleep(1)
+        self.gp.output(self.pin_out, gp.LOW)
+        sleep(0.000002)
+        global st, sto
+
     def DistUltrason(self):
         gp.output(16, gp.HIGH)  #initialisation du capteur
         sleep(0.00001)
