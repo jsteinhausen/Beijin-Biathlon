@@ -17,6 +17,8 @@ from time import sleep,time
 class Ultrason:
 
     def _init_(self,pin_in,pin_out):
+        self.pin_in=pin_in
+        self.pin_out=pin_out
         gp.setmode(gp.BOARD)
         gp.setup(self.pin_out, gp.OUT)
         gp.setup(self.pin_in, gp.IN)
