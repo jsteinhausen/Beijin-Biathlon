@@ -17,11 +17,11 @@ from time import sleep,time
 class Ultrason:
 
     def _init_(self,pin_in,pin_out):
-        self.gp.setmode(gp.BOARD)
-        self.gp.setup(self.pin_out, gp.OUT)
-        self.gp.setup(self.pin_in, gp.IN)
+        gp.setmode(gp.BOARD)
+        gp.setup(self.pin_out, gp.OUT)
+        gp.setup(self.pin_in, gp.IN)
         sleep(1)
-        self.gp.output(self.pin_out, gp.LOW)
+        gp.output(self.pin_out, gp.LOW)
         sleep(0.000002)
         global st, sto
 
