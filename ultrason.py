@@ -2,16 +2,16 @@ import RPi.GPIO as gp
 from time import sleep,time
 #import LiquidCrystal_I2C
 #lcd=LiquidCrystal_I2C.lcd()
-gp.setmode(gp.BOARD)
-gp.setup(16,gp.OUT)
-gp.setup(15,gp.IN)
+#gp.setmode(gp.BOARD)
+#gp.setup(16,gp.OUT)
+#gp.setup(15,gp.IN)
 #lcd.display("Measuring",1,4)
 #lcd.display("Distance",2,4)
-sleep(1)
+#sleep(1)
 #lcd.clear()
-gp.output(16,gp.LOW)
-sleep(0.000002)
-global st,sto
+#gp.output(16,gp.LOW)
+#sleep(0.000002)
+#global st,sto
 #lcd.display("Distance:",1,1)
 
 class Ultrason:
@@ -42,6 +42,3 @@ class Ultrason:
         return dist
 
 
-sensor=Ultrason()
-while True:
-  print(sensor.DistUltrason())
