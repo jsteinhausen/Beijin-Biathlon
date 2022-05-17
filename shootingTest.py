@@ -1,5 +1,7 @@
 import RPi.GPIO as GPIO
 import time
+import adafruitMotorshield
+
 shield=adafruitMotorshield.AdafruitMotorShield()
 shield.createDCMotor()
 GPIO.setmode(GPIO.BOARD)
