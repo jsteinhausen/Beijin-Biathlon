@@ -3,11 +3,11 @@ import time
 
 shield=adafruitMotorshield.AdafruitMotorShield()
 shield.createStepperMotor(1.8,65,0.1)
-shield.adafruitStepperMotor.stepperSpeed=0.02
+shield.adafruitStepperMotor.stepperSpeed=0.005
 
 #for i in range(shield.adafruitStepperMotor.distance2steps(100)):
 
-shield.adafruitStepperMotor.moveDistance(100)
+shield.adafruitStepperMotor.moveDistance(-100)
     #0.001 is perfect
     #0.0009 is stable
     #0.0008 is stable
