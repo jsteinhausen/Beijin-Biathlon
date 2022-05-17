@@ -4,7 +4,7 @@ import adafruitMotorshield
 
 shield=adafruitMotorshield.AdafruitMotorShield()
 shield.createDCMotor()
-switch=12
+switch=18
 GPIO.setup(switch, GPIO.IN)
 while True:
     print(GPIO.input(switch))
