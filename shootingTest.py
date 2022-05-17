@@ -4,4 +4,5 @@ GPIO.setmode(GPIO.BOARD)
 switch=12
 GPIO.setup(switch, GPIO.IN)
 
-f=GPIO.input(switch)
+while True:
+    GPIO.input(switch)
