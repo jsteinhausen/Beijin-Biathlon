@@ -7,7 +7,7 @@ shield.createDCMotor()
 switch=12
 GPIO.setup(switch, GPIO.IN)
 
-while GPIO.input(switch):
+while not GPIO.input(switch):
     shield.adafruitDCMotor.backward()
 
 shield.adafruitDCMotor.stop()
