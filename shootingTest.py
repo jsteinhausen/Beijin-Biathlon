@@ -5,4 +5,4 @@ switch=12
 GPIO.setup(switch, GPIO.IN)
 
 while True:
-    GPIO.input(switch)
+    print(GPIO.input(switch))
