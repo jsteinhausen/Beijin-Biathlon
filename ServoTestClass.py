@@ -4,6 +4,7 @@ import servo
 
 servo1=servo.Servo(12,50)
 servo1.turn_to_angle(200)
+GPIO.cleanup()
 #servoPIN = 13
 
 #GPIO.setmode(GPIO.BCM)
@@ -39,4 +40,3 @@ servo1.turn_to_angle(200)
     #time.sleep(0.5)
 #except KeyboardInterrupt:
  #   p.stop()
-  #  GPIO.cleanup()
