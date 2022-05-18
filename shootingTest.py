@@ -13,6 +13,7 @@ def shoot():
     shield.adafruitDCMotor.backward()
     time.sleep(1)
     while True:
+        print(GPIO.input(switch))
         if GPIO.input(switch) == 0:
             shield.adafruitDCMotor.backward()
         else:
