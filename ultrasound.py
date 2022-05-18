@@ -1,5 +1,7 @@
 import RPi.GPIO as gp
 from time import sleep,time
+import statistics
+
 
 
 class Ultrasound:
@@ -30,5 +32,13 @@ class Ultrasound:
             dist = round(dist, 3)    #rounding nach dem dritten zahl nach dem komma ?
             #print("distance est de", dist)
         return dist
+
+    def median_dist(self):
+        list=[]
+        for i in range(10):
+            list.append(self.distance())
+
+        return statistics.median(list)
+
 
 
