@@ -5,7 +5,7 @@ import adafruitMotorshield
 mode = GPIO.getmode()
 shield=adafruitMotorshield.AdafruitMotorShield()
 shield.createDCMotor()
-mode=GPIO.getmode()
+
 switch=12
 GPIO.setup(switch, GPIO.IN)
 while True:
