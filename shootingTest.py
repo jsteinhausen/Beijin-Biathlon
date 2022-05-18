@@ -9,13 +9,22 @@ shield.createDCMotor()
 switch=12
 GPIO.setup(switch, GPIO.IN,GPIO.PUD_DOWN)
 
-try:
+def shoot():
+    shield.adafruitDCMotor.backward()
+    time.sleep(1)
     while True:
-        if GPIO.input(switch)==1:
+        if GPIO.input(switch) == 0:
             shield.adafruitDCMotor.backward()
         else:
             shield.adafruitDCMotor.stop()
-        print(GPIO.input(switch))
+
+
+try:
+    while GPIO.input(switch)==0:
+        shield.adafruitDCMotor.backward()
+    shield.adafruitDCMotor.stop()
+
+    print(GPIO.input(switch))
 except KeyboardInterrupt:
     pass
 shield.adafruitDCMotor.stop()
