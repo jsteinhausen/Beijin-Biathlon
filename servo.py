@@ -8,7 +8,7 @@ class Servo:
         p = GPIO.PWM(PIN, PWM)
         p.start(2.5)
 
-    def translate(value, leftMin, leftMax, rightMin, rightMax):
+    def translate(self,value, leftMin, leftMax, rightMin, rightMax):
         # Figure out how 'wide' each range is
         leftSpan = leftMax - leftMin
         rightSpan = rightMax - rightMin
