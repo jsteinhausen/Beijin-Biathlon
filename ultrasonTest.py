@@ -1,5 +1,10 @@
-from ultrason import Ultrason
+import RPi
+from ultrasound import Ultrasound
 
-sensor=Ultrason(15,16)
-while True:
-  print(sensor.DistUltrason())
+sensor=Ultrasound(15, 16)
+try:
+  while True:
+    print(sensor.distance())
+except KeyboardInterrupt:
+  pass
+RPi.GPIO.cleanup()
