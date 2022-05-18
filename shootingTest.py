@@ -11,7 +11,7 @@ GPIO.setup(switch, GPIO.IN,GPIO.PUD_DOWN)
 
 try:
     while True:
-        if GPIO.input(switch):
+        if GPIO.input(switch)==1:
             shield.adafruitDCMotor.backward()
         else:
             shield.adafruitDCMotor.stop()
