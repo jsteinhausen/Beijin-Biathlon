@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
 import time
-GPIO.setmode(GPIO.BOARD)
-led=12
+GPIO.setmode(GPIO.BCM)
+led=27
 GPIO.setup(led, GPIO.OUT,initial=GPIO.LOW)
 
 #LED ON
@@ -10,4 +10,5 @@ time.sleep(60)
 #LED OFF
 GPIO.output(led, GPIO.LOW)
 time.sleep(2)
+GPIO.cleanup()
 
