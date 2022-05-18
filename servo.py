@@ -5,8 +5,8 @@ class Servo:
     def __init__(self,PIN,PWM):
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(PIN, GPIO.OUT)
-        p = GPIO.PWM(PIN, PWM)
-        p.start(2.5)
+        self.p = GPIO.PWM(PIN, PWM)
+        self.p.start(2.5)
 
     def translate(self,value, leftMin, leftMax, rightMin, rightMax):
         # Figure out how 'wide' each range is
