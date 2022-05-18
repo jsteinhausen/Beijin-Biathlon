@@ -24,7 +24,7 @@ try:
     while GPIO.input(switch)==0:
         shield.adafruitDCMotor.backward()
     shield.adafruitDCMotor.stop()
-
+    shoot()
     print(GPIO.input(switch))
 except KeyboardInterrupt:
     pass
