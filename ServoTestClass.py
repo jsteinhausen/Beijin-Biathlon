@@ -31,9 +31,9 @@ pwnPercent = translate(angle, 0.0, 45.0, 5.0, 10.0)
 print(pwnPercent)
 
 try:
-    while True:
-        p.ChangeDutyCycle(pwnPercent)
-        time.sleep(0.5)
+    #while True:
+    p.ChangeDutyCycle(pwnPercent)
+    time.sleep(0.5)
 except KeyboardInterrupt:
     p.stop()
     GPIO.cleanup()
