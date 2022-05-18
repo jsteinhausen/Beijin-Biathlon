@@ -35,8 +35,8 @@ servo1.turn_to_angle(18)
 
 #try:
     #while True:
- #   p.ChangeDutyCycle(pwnPercent)
- #   time.sleep(0.5)
+    #p.ChangeDutyCycle(pwnPercent)
+    #time.sleep(0.5)
 #except KeyboardInterrupt:
  #   p.stop()
   #  GPIO.cleanup()
