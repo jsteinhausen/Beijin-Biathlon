@@ -11,10 +11,14 @@ GPIO.setup(switch, GPIO.IN,GPIO.PUD_DOWN)
 
 try:
     while True:
+        if GPIO.input(switch):
+            shield.adafruitDCMotor.backward()
+        else:
+            shield.adafruitDCMotor.stop()
         print(GPIO.input(switch))
 except KeyboardInterrupt:
     pass
-
+shield.adafruitDCMotor.stop()
 GPIO.cleanup()
 print('stop')
 #while not GPIO.input(switch):
