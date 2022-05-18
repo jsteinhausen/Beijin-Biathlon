@@ -26,7 +26,7 @@ def translate(value, leftMin, leftMax, rightMin, rightMax):
     return rightMin + (valueScaled * rightSpan)
 
 
-angle = 45 # winkel von 0 bis 45° eingeben
+angle = 0 # winkel von 0 bis 45° eingeben
 pwnPercent = translate(angle, 0.0, 45.0, 5.0, 10.0)
 print(pwnPercent)
 
