@@ -3,7 +3,7 @@ import time
 import servo
 
 servo1=servo.Servo(13,50)
-servo1.turn_to_angle(18)
+servo1.turn_to_angle(45)
 #servoPIN = 13
 
 #GPIO.setmode(GPIO.BCM)
