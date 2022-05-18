@@ -14,9 +14,7 @@ testDcMotor=adafruitMotorshield.AdafruitDCMotor()
 
 if __name__ == '__main__':
     print_hi('PyCharm')
-testDcMotor.forward()
-time.sleep(2)
-testDcMotor.stop()
+
 
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
