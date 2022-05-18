@@ -18,12 +18,17 @@ def shoot():
 
     shield.adafruitDCMotor.stop()
 
+def release():
+    shield.adafruitDCMotor.forward()
+    time.sleep(1)
+
 
 try:
     while GPIO.input(switch)==0:
         shield.adafruitDCMotor.backward()
     shield.adafruitDCMotor.stop()
     shoot()
+    release()
     print(GPIO.input(switch))
 except KeyboardInterrupt:
     pass
