@@ -66,13 +66,13 @@ class AdafruitStepper:
         self.stepperMotor.onestep(direction=self.stepper.FORWARD,style=self.stepperMotorStyle)
         self.distanceTraveled+=self.distanceOneStep
         self.stepsMade+=1
-        self.stepperMotor.release()
+        #self.stepperMotor.release()
 
     def oneStepBackward(self):
         self.stepperMotor.onestep(direction=self.stepper.BACKWARD,style=self.stepperMotorStyle)
         self.distanceTraveled-=self.distanceOneStep
         self.stepsMade+=1
-        self.stepperMotor.release()
+        #self.stepperMotor.release()
 
     def oneMicroStepForward(self):
         self.stepperMotor.onestep(direction=self.stepper.FORWARD,style=self.MICROSTEP)
