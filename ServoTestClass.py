@@ -6,8 +6,8 @@ try:
     servo45 = servo.Servo45(13, 50)
     servo45.turn_to_angle(0)
 
-    servo360 = servo.Servo360(12, 50)
-    servo360.turn_to_angle(180)
+    #servo360 = servo.Servo360(12, 50)
+    #servo360.turn_to_angle(180)
 except KeyboardInterrupt:
     pass
 GPIO.cleanup()
