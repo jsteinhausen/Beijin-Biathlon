@@ -29,6 +29,7 @@ DISTANCE_FRONT2GUN=200
 running = False
 
 def cut_out(im,distance):
+    distance+=55
     if (1400<=distance<=1600):
         im_out = im[190:360,280:400, :]
         im_out = im_out[:, :, ::-1]
