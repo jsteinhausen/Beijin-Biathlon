@@ -31,7 +31,7 @@ class Servo360:
             GPIO.setmode(GPIO.BCM)
             GPIO.setup(PIN, GPIO.OUT)
             self.p = GPIO.PWM(PIN, PWM)
-            self.p.start(0)
+            self.p.start(7.5)
 
         def translate(self, value, leftMin, leftMax, rightMin, rightMax):
             # Figure out how 'wide' each range is
