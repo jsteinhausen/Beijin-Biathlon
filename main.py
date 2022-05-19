@@ -16,6 +16,7 @@ import adafruitMotorshield
 
 shield = adafruitMotorshield.AdafruitMotorShield()
 shield.createDCMotor()
+shield.createStepperMotor(1.8,65,0.1)
 sensor_ultrasound=ultrasound.Ultrasound(22,23)
 switch=4
 button=6
@@ -110,7 +111,7 @@ def get_target():
 def init_shoot():
     while GPIO.input(switch) == 0:
         shield.adafruitDCMotor.forward()
-
+    shield.adafruitDCMotor.stop()
 
 def shoot():
     shield.adafruitDCMotor.forward()
@@ -120,7 +121,6 @@ def shoot():
         shield.adafruitDCMotor.backward()
 
     shield.adafruitDCMotor.stop()
-
 
 def shooting_release():
     shield.adafruitDCMotor.backward()
@@ -132,6 +132,7 @@ def recharge_gun():
 
 def move_gun2angle(distance_x,distance_y):
     servo=1
+
 try:
     init_shoot()
     for i in range(0):
@@ -166,8 +167,8 @@ except KeyboardInterrupt:
     pass
 except TypeError:
     pass
-shield.AdafruitDCMotor.stop()
-shield.AdafruitStepper.steppper.release()
+shield.adafruitDCMotor.stop()
+shield.adafruitStepper.steppper.release()
 GPIO.cleanup()
 
 
