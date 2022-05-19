@@ -18,14 +18,15 @@ try:
             shield.adafruitStepperMotor.moveDistance(100)
         else:
             shield.adafruitStepperMotor.stepperMotor.release()
+
+        print('Button'+str(button))
+        print(GPIO.input(switch))
         if GPIO.event_detected(switch):
             print('Button pressed')
             if button:
                 button=False
             else:
                 button=True
-        print('Button'+str(button))
-        print(GPIO.input(switch))
 except KeyboardInterrupt:
     pass
 shield.adafruitStepperMotor.stepperMotor.release()
