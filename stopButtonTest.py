@@ -24,6 +24,7 @@ try:
                 button=False
             else:
                 button=True
+        print('Button'+button)
         print(GPIO.input(switch))
 except KeyboardInterrupt:
     pass
