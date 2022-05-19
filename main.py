@@ -102,6 +102,7 @@ def object_detect(image):
 def take_image():
     cap = cv2.VideoCapture(0)
     ret, frame = cap.read()
+    frame=cv2.flip(frame,0)
     return ret, frame
 
 def get_target():
