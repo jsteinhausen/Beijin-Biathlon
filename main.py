@@ -107,7 +107,7 @@ def take_image():
 def get_target():
     ret, frame= take_image()
     im= cut_out(frame,sensor_ultrasound.median_dist())
-    cv2.imwrite('image',im)
+    cv2.imwrite('image.jpg',im)
     return object_detect(im)
 
 def init_shoot():
