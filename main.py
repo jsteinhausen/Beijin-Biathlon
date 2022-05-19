@@ -12,13 +12,15 @@ from pyimagesearch.shapedetector import ShapeDetector
 import adafruitMotorshield
 
 
-def init():
-    shield = adafruitMotorshield.AdafruitMotorShield()
-    shield.createDCMotor()
-    switch=4
-    button=6
-    GPIO.setup(switch, GPIO.IN, GPIO.PUD_DOWN)
-    GPIO.setup(button, GPIO.IN, GPIO.PUD_DOWN)
+shield = adafruitMotorshield.AdafruitMotorShield()
+shield.createDCMotor()
+switch=4
+button=6
+GPIO.setup(switch, GPIO.IN, GPIO.PUD_DOWN)
+GPIO.setup(button, GPIO.IN, GPIO.PUD_DOWN)
+GPIO.add_event_detect(switch, GPIO.RISING, bouncetime=200)
+distances = [1000, 1800, 250]
+running = False
 
 def cut_out(im,distance):
     if (1400<=distance<=1600):
@@ -116,6 +118,11 @@ def shooting_release():
     time.sleep(1)
     GPIO.cleanup()
 
-distances=[1000,1800,250]
+init_shoot()
+for i in range(3):
+    shield.adafruitStepperMotor.movetodistance(distances[i])
+
+
+
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
