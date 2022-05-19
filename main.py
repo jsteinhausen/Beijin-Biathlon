@@ -103,10 +103,12 @@ def object_detect(image):
         ret=False
         if targets[i].is_this_targent(circles)[0]:
             actual_target=targets[i]
-            ret=True
             if targets[i].is_this_targent(circles)[1]:
                 actual_target=targets[i].get_inv_target()
-    return ret,actual_target
+            return actual_target
+        else:
+            targethelper.Target(400, 300, tolerance, 105, 105, 185, 285)
+
 
 def take_image():
     cap = cv2.VideoCapture(0)
@@ -119,9 +121,7 @@ def get_target():
     ret, frame= take_image()
     im= cut_out(frame,750)#sensor_ultrasound.median_dist()
     ret,detected_object =object_detect(im)
-    if ret:
-        return detected_object
-    return targethelper.Target(400, 300, 0.5, 105, 105, 185, 285)
+    return detected_object
 
 def init_shoot():
     while GPIO.input(switch) == 0:
