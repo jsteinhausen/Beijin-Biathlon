@@ -9,15 +9,21 @@ shield.adafruitStepperMotor.stepperSpeed=0.1
 #GPIO.setmode(GPIO.BCM)
 switch=6
 GPIO.setup(switch, GPIO.IN,GPIO.PUD_DOWN)
-GPIO.add_event_detect(switch, GPIO.HIGH)
+GPIO.add_event_detect(switch, GPIO.RISING,bouncetime=200)
+button=False
 
 try:
     while True:
         shield.adafruitStepperMotor.moveDistance(20)
-        print(GPIO.input(switch))
+
+        shield.adafruitStepperMotor.stepperMotor.release()
         if GPIO.event_detected(switch):
             print('Button pressed')
-            shield.adafruitStepperMotor.stepperMotor.release()
+            if button:
+                button=False
+            else:
+                button=True
+        print(GPIO.input(switch))
 except KeyboardInterrupt:
     pass
 shield.adafruitStepperMotor.stepperMotor.release()
