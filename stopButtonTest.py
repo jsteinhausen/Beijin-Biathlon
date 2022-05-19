@@ -13,11 +13,11 @@ GPIO.add_event_detect(switch, GPIO.RISING)
 
 try:
     while True:
-        shield.adafruitStepperMotor.moveDistance(2)
+        shield.adafruitStepperMotor.moveDistance(20)
         print(GPIO.input(switch))
-        #if GPIO.event_detected(switch):
-            #print('Button pressed')
-            #shield.adafruitStepperMotor.oneStepBackward()
+        if GPIO.event_detected(switch):
+            print('Button pressed')
+            shield.adafruitStepperMotor.oneStepBackward()
 except KeyboardInterrupt:
     pass
 shield.adafruitStepperMotor.stepperMotor.release()
