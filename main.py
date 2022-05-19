@@ -134,7 +134,7 @@ def move_gun2angle(distance_x,distance_y):
     servo=1
 
 init_shoot()
-for i in range(1):
+for i in range(0):
     shield.adafruitStepperMotor.movetodistance(DISTANCES2TAGETS_X[i])
     target=get_target()
     if target.circle_high.x==target.width/2:
