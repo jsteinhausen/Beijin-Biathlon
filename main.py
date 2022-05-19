@@ -165,10 +165,10 @@ try:
             recharge_gun()
 except KeyboardInterrupt:
     pass
-except TypeError:
-    pass
+#except TypeError:
+    #pass
 shield.adafruitDCMotor.stop()
-shield.adafruitStepper.steppper.release()
+shield.adafruitStepperMotor.steppper.release()
 GPIO.cleanup()
 
 
