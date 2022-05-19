@@ -42,14 +42,14 @@ class Servo360:
 
         # Convert the 0-1 range into a value in the right range.
         return rightMin + (valueScaled * rightSpan)
-"""
-    #speed entre 5 et 10
+
+#speed entre 5 et 10
     def turn_to_angle(self,angle):
         pwnPercent360 = self.translate(angle, 0.0, 180, 5.0, 10.0)
         self.p.ChangeDutyCycle(pwnPercent360)
         time.sleep(0.10)
         #return pwnPercent
-
+"""
 
 
 # ChangeDutyCycle(5) 5 steht fuer pulsweite von 5% von 20ms (f=50Hz)
