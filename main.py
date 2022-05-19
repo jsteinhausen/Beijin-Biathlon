@@ -47,6 +47,8 @@ def cut_out(im,distance):
         im_out = im[0:400, 150:450, :]
         im_out = im_out[:, :, ::-1]
         return im_out
+    else:
+        return im
 
 def cop(im,border):
     im_out = im[border:im.shape[0] - border, border:im.shape[1] - border, :]
