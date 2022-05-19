@@ -24,7 +24,7 @@ switch=4
 button=6
 GPIO.setup(switch, GPIO.IN, GPIO.PUD_DOWN)
 GPIO.setup(button, GPIO.IN, GPIO.PUD_DOWN)
-GPIO.add_event_detect(switch, GPIO.RISING, bouncetime=200)
+GPIO.add_event_detect(button, GPIO.RISING, bouncetime=200)
 servo45 = servo.Servo45(13, 50)
 servo360 = servo.Servo360(12, 50)
 DISTANCES2TAGETS_X = [1000, 1800, 250]
@@ -172,7 +172,6 @@ def move_gun2angle(distance_z,distance_y):
 
 try:
     while shield.adafruitStepperMotor.distanceTraveled<=3000:
-
         if running:
             init_shoot()
             for i in range(3):
@@ -204,7 +203,7 @@ try:
                         shoot()
 
                     recharge_gun()
-        if GPIO.event_detected(switch):
+        if GPIO.event_detected(button):
             print('Button pressed')
             if running:
                 running=False
