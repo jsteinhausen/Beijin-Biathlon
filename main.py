@@ -105,7 +105,7 @@ def take_image():
 
 def get_target():
     ret, frame= take_image()
-    im= cut_out(frame)
+    im= cut_out(frame,sensor_ultrasound.median_dist())
     return object_detect(im)
 
 def init_shoot():
