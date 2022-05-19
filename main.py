@@ -16,7 +16,7 @@ import adafruitMotorshield
 
 shield = adafruitMotorshield.AdafruitMotorShield()
 shield.createDCMotor()
-sensor_ultrasound=ultrasound.Ultrasound(15,16)
+sensor_ultrasound=ultrasound.Ultrasound(22,23)
 switch=4
 button=6
 GPIO.setup(switch, GPIO.IN, GPIO.PUD_DOWN)

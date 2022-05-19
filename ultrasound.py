@@ -9,7 +9,7 @@ class Ultrasound:
     def __init__(self,pin_in,pin_out):
         self.pin_in=pin_in
         self.pin_out=pin_out
-        gp.setmode(gp.BOARD)
+        gp.setmode(gp.BCM)
         gp.setup(self.pin_out, gp.OUT)
         gp.setup(self.pin_in, gp.IN)
         sleep(1)
