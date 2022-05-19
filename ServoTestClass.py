@@ -5,8 +5,8 @@ try:
     servo1=servo.Servo(12,50)
     servo1.turn_to_angle(180)
 except KeyboardInterrupt:
-
-    GPIO.cleanup()
+    pass
+GPIO.cleanup()
 #servoPIN = 13
 
 #GPIO.setmode(GPIO.BCM)
