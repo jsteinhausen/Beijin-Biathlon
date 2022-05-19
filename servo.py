@@ -24,7 +24,7 @@ class Servo45:
         self.p.ChangeDutyCycle(pwnPercent)
         #time.sleep(0.5)
         #return pwnPercent
-
+"""
 class Servo360:
     def __init__(self,PIN,PWM):
         GPIO.setmode(GPIO.BCM)
@@ -42,7 +42,7 @@ class Servo360:
 
         # Convert the 0-1 range into a value in the right range.
         return rightMin + (valueScaled * rightSpan)
-
+"""
     #speed entre 5 et 10
     def turn_to_angle(self,angle):
         pwnPercent360 = self.translate(angle, 0.0, 180, 5.0, 10.0)
