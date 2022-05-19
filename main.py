@@ -138,7 +138,7 @@ def recharge_gun():
     servo45.turn_to_angle(45)
     time.sleep(5)
     servo360.turn_to_angle(100)
-    servo360.stop()
+
 
 def move_gun2angle(distance_x,distance_y):
     servo=1
