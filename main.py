@@ -171,38 +171,44 @@ def move_gun2angle(distance_z,distance_y):
     time.sleep(1)
 
 try:
-    init_shoot()
-    recharge_gun()
-    #recharge_gun()
-    for i in range(1):
-        shield.adafruitStepperMotor.movetodistance(DISTANCES2TAGETS_X[i])
-        shield.adafruitStepperMotor.stepperMotor.release()
-        target=get_target()
-        if target.circle_high.x==target.width/2:
-            shield.adafruitStepperMotor.moveDistance(DISTANCE_FRONT2GUN)
-            move_gun2angle(sensor_ultrasound.median_dist(),target.circle_high.y)
-            shoot()
-            recharge_gun()
-            move_gun2angle(sensor_ultrasound.median_dist(), target.circle_low.y)
-            recharge_gun()
-        else:
-            shield.adafruitStepperMotor.moveDistance(-(target.width/2-105))
-            if target.inv:
-                move_gun2angle(sensor_ultrasound.median_dist(), target.circle_high.y)
-                shoot()
-            else:
-                move_gun2angle(move_gun2angle(sensor_ultrasound.median_dist(), target.circle_low.y))
-                shoot()
-            recharge_gun()
-            shield.adafruitStepperMotor.moveDistance((185-105))
-            if target.inv:
-                move_gun2angle(sensor_ultrasound.median_dist(), target.circle_low.y)
-                shoot()
-            else:
-                move_gun2angle(move_gun2angle(sensor_ultrasound.median_dist(), target.circle_high.y))
-                shoot()
+    while shield.adafruitStepperMotor.distanceTraveled<=3000:
 
-            recharge_gun()
+        if running:
+            init_shoot()
+            for i in range(3):
+                shield.adafruitStepperMotor.movetodistance(DISTANCES2TAGETS_X[i])
+                shield.adafruitStepperMotor.stepperMotor.release()
+                target=get_target()
+                if target.circle_high.x==target.width/2:
+                    shield.adafruitStepperMotor.moveDistance(DISTANCE_FRONT2GUN)
+                    move_gun2angle(sensor_ultrasound.median_dist(),target.circle_high.y)
+                    shoot()
+                    recharge_gun()
+                    move_gun2angle(sensor_ultrasound.median_dist(), target.circle_low.y)
+                    recharge_gun()
+                else:
+                    shield.adafruitStepperMotor.moveDistance(-(target.width/2-105))
+                    if target.inv:
+                        move_gun2angle(sensor_ultrasound.median_dist(), target.circle_high.y)
+                        shoot()
+                    else:
+                        move_gun2angle(move_gun2angle(sensor_ultrasound.median_dist(), target.circle_low.y))
+                        shoot()
+                    recharge_gun()
+                    shield.adafruitStepperMotor.moveDistance((185-105))
+                    if target.inv:
+                        move_gun2angle(sensor_ultrasound.median_dist(), target.circle_low.y)
+                        shoot()
+                    else:
+                        move_gun2angle(move_gun2angle(sensor_ultrasound.median_dist(), target.circle_high.y))
+                        shoot()
+
+                    recharge_gun()
+        if GPIO.event_detected(switch):
+            print('Button pressed')
+            running=True
+
+
 except KeyboardInterrupt:
     pass
 #except TypeError:
