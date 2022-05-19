@@ -24,7 +24,7 @@ class Servo:
         t = True
         pwnPercent = self.translate(angle, 0.0, 180, 5.0, 10.0)
         self.p.ChangeDutyCycle(pwnPercent)
-        time.sleep(0.14)
+        time.sleep(0.12)
 
 
         #time.sleep(0.5)
