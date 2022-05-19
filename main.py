@@ -5,7 +5,7 @@
 import adafruitMotorshield
 import time
 import RPi.GPIO as GPIO
-
+import math
 import servo
 import targethelper
 import imutils
@@ -30,6 +30,8 @@ servo360 = servo.Servo360(12, 50)
 DISTANCES2TAGETS_X = [1000, 1800, 250]
 DISTANCE_FRONT2CAMERA=100
 DISTANCE_FRONT2GUN=200
+VELOCITY=5
+G=9.81
 running = False
 global i
 
@@ -148,8 +150,12 @@ def recharge_gun():
     servo360.turn_to_angle(100)
 
 
-def move_gun2angle(distance_x,distance_y):
-    servo=1
+def move_gun2angle(distance_z,distance_y):
+    lam=(VELOCITY^2)/(G*distance_z)
+    tanA=(distance_y-0.08)/distance_z
+    angle=math.atan((lam-math.sqrt((lam^2-1-(2*lam*tanA)))))
+    servo45.turn_to_angle(angle)
+    time.sleep(1)
 
 try:
     init_shoot()
