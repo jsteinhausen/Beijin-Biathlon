@@ -49,7 +49,7 @@ class Servo360:
             pwnPercent = self.translate(angle, 0.0, 180, 5.0, 10.0)
             self.p.ChangeDutyCycle(10)
             # time.sleep(0.5)
-            return pwnPercent
+            #return pwnPercent
 
 
 
