@@ -172,9 +172,9 @@ def move_gun2angle(distance_z,distance_y):
 
 try:
     while shield.adafruitStepperMotor.distanceTraveled<=3000:
-        if running:
-            init_shoot()
-            for i in range(3):
+        init_shoot()
+        for i in range(3):
+            if running:
                 shield.adafruitStepperMotor.movetodistance(DISTANCES2TAGETS_X[i])
                 shield.adafruitStepperMotor.stepperMotor.release()
                 target=get_target()
@@ -201,15 +201,15 @@ try:
                     else:
                         move_gun2angle(move_gun2angle(sensor_ultrasound.median_dist(), target.circle_high.y))
                         shoot()
-
                     recharge_gun()
-        if GPIO.event_detected(button):
-            print('Button pressed')
-            if running:
-                running=False
             else:
-                running=True
-
+                pass
+            if GPIO.event_detected(button):
+                print('Button pressed')
+                if running:
+                    running=False
+                else:
+                    running=True
 
 except KeyboardInterrupt:
     pass
