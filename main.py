@@ -4,16 +4,17 @@
 # Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
 import adafruitMotorshield
 import time
-
+import RPi.GPIO as GPIO
 import targethelper
 import imutils
 import cv2
 from pyimagesearch.shapedetector import ShapeDetector
-import numpy as np
+import adafruitMotorshield
+shield=adafruitMotorshield.AdafruitMotorShield()
+shield.createDCMotor()
 
 
 def cut_out(im,distance):
-
     if (1400<=distance<=1600):
         im_out = im[190:360,280:400, :]
         im_out = im_out[:, :, ::-1]
@@ -26,7 +27,6 @@ def cut_out(im,distance):
         im_out = im[0:400, 150:450, :]
         im_out = im_out[:, :, ::-1]
         return im_out
-
 
 def cop(im,border):
     im_out = im[border:im.shape[0] - border, border:im.shape[1] - border, :]
@@ -84,5 +84,29 @@ def object_detect(image):
                 actual_target=targets[i].get_inv_target()
     return actual_target
 
+def take_image():
+    cap = cv2.VideoCapture(0)
+    ret, frame = cap.read()
+    return ret, frame
 
+
+def init_shoot():
+    while GPIO.input(switch) == 0:
+        shield.adafruitDCMotor.backward()
+
+
+def shoot():
+    shield.adafruitDCMotor.backward()
+    time.sleep(1)
+    while GPIO.input(switch) == 0:
+        print(GPIO.input(switch))
+        shield.adafruitDCMotor.backward()
+
+    shield.adafruitDCMotor.stop()
+
+
+def shooting_release():
+    shield.adafruitDCMotor.forward()
+    time.sleep(1)
+    GPIO.cleanup()
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/

@@ -9,6 +9,11 @@ shield.createDCMotor()
 switch=12
 GPIO.setup(switch, GPIO.IN,GPIO.PUD_DOWN)
 
+def init_shoot():
+    while GPIO.input(switch)==0:
+        shield.adafruitDCMotor.backward()
+
+
 def shoot():
     shield.adafruitDCMotor.backward()
     time.sleep(1)
@@ -18,9 +23,12 @@ def shoot():
 
     shield.adafruitDCMotor.stop()
 
-def release():
+def shooting_release():
     shield.adafruitDCMotor.forward()
     time.sleep(1)
+    GPIO.cleanup()
+
+
 
 
 try:
