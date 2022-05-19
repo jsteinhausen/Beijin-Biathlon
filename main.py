@@ -159,8 +159,11 @@ def move_gun2angle(distance_z,distance_y):
     lam=(VELOCITY^2)/(G*distance_z)
     tanA=(distance_y-0.08)/distance_z
     a=pow(lam,2)-1-(2*lam*tanA)
-    b=lam-(math.sqrt(a))
-    angle=math.atan(b)
+    if a>0:
+        b=lam-(math.sqrt(a))
+        angle=math.atan(b)
+    else:
+        angle=5
     if angle<=45:
         servo45.turn_to_angle(angle)
     else:
