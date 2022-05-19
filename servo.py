@@ -53,8 +53,9 @@ class Servo360:
         #return pwnPercent
 
     def stop(self):
-        self.p.ChangeDutyCycle(7.5)
-        GPIO.cleanup()
+        pwnPercent360 = self.translate(90, 0.0, 180, 5.0, 10.0)
+        self.p.ChangeDutyCycle(pwnPercent360)
+        #GPIO.cleanup()
 
 
 
