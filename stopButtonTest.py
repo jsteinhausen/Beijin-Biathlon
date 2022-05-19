@@ -12,9 +12,17 @@ GPIO.setup(switch, GPIO.IN,GPIO.PUD_DOWN)
 GPIO.add_event_detect(switch, GPIO.RISING,bouncetime=200)
 button=False
 
+def test(switch ,button):
+    if GPIO.event_detected(switch):
+        print('Button pressed')
+        if button:
+            return False
+        else:
+            return True
+
 try:
     while True:
-        if button:
+        if test(switch,button):
             shield.adafruitStepperMotor.moveDistance(10)
         else:
             shield.adafruitStepperMotor.stepperMotor.release()
