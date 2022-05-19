@@ -54,7 +54,7 @@ class Servo360:
 
     def stop(self):
         self.p.ChangeDutyCycle(7.5)
-        #GPIO.cleanup()
+        GPIO.cleanup()
 
 
 
