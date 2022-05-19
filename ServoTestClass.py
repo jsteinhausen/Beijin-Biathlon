@@ -2,8 +2,8 @@ import RPi.GPIO as GPIO
 import time
 import servo
 
-servo1=servo.Servo(12,50)
-servo1.turn_to_angle(180)
+servo1=servo.Servo(13,50)
+servo1.turn_to_angle(45)
 GPIO.cleanup()
 #servoPIN = 13
 
