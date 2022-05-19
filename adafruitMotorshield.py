@@ -109,6 +109,9 @@ class AdafruitStepper:
         else:
             self.DEFAULT_STEPPER_SPEED
 
+    def movetodistance(self,distance):
+        self.moveDistance(distance-self.distanceTraveled)
+
 
 
 

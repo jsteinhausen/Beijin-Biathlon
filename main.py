@@ -10,9 +10,15 @@ import imutils
 import cv2
 from pyimagesearch.shapedetector import ShapeDetector
 import adafruitMotorshield
-shield=adafruitMotorshield.AdafruitMotorShield()
-shield.createDCMotor()
 
+
+def init():
+    shield = adafruitMotorshield.AdafruitMotorShield()
+    shield.createDCMotor()
+    switch=4
+    button=6
+    GPIO.setup(switch, GPIO.IN, GPIO.PUD_DOWN)
+    GPIO.setup(button, GPIO.IN, GPIO.PUD_DOWN)
 
 def cut_out(im,distance):
     if (1400<=distance<=1600):
@@ -109,4 +115,7 @@ def shooting_release():
     shield.adafruitDCMotor.forward()
     time.sleep(1)
     GPIO.cleanup()
+
+distances=[1000,1800,250]
+
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
