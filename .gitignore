@@ -11,6 +11,10 @@
 # IPython
 profile_default/
 ipython_config.py
+# local config
+Beijin-Biathlon.iml
+deployment.xml
+misc.xml
 
 # Remove previous ipynb_checkpoints
 #   git rm -r .ipynb_checkpoints/
