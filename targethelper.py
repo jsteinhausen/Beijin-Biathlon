@@ -7,7 +7,7 @@ class Circle:
 
 
 class Target:
-
+    inv=False
     def __init__(self, height, width, tolerance, circle_low_X, circle_low_Y, circle_high_X, circle_high_Y):
         self.height = height
 
@@ -68,6 +68,7 @@ class Target:
             return False, False
 
     def get_inv_target(self):
+        self.inv=True
         inv_target=Target(self.height,self.width,self.tolerance,self.height-self.circle_low.x,self.width-self.circle_low.y,self.width-self.circle_high.x,self.height-self.circle_high.y)
         return inv_target
 

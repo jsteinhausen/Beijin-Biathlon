@@ -8,18 +8,23 @@ import RPi.GPIO as GPIO
 import targethelper
 import imutils
 import cv2
+
+import ultrasound
 from pyimagesearch.shapedetector import ShapeDetector
 import adafruitMotorshield
 
 
 shield = adafruitMotorshield.AdafruitMotorShield()
 shield.createDCMotor()
+sensor_ultrasound=ultrasound.Ultrasound(15,16)
 switch=4
 button=6
 GPIO.setup(switch, GPIO.IN, GPIO.PUD_DOWN)
 GPIO.setup(button, GPIO.IN, GPIO.PUD_DOWN)
 GPIO.add_event_detect(switch, GPIO.RISING, bouncetime=200)
-distances = [1000, 1800, 250]
+DISTANCES2TAGETS_X = [1000, 1800, 250]
+DISTANCE_FRONT2CAMERA=100
+DISTANCE_FRONT2GUN=200
 running = False
 
 def cut_out(im,distance):
@@ -97,6 +102,10 @@ def take_image():
     ret, frame = cap.read()
     return ret, frame
 
+def get_target():
+    ret, frame= take_image()
+    im= cut_out(frame)
+    return object_detect(im)
 
 def init_shoot():
     while GPIO.input(switch) == 0:
@@ -118,9 +127,51 @@ def shooting_release():
     time.sleep(1)
     GPIO.cleanup()
 
+def recharge_gun():
+    servo360=1
+
+def move_gun2angle(distance_x,distance_y):
+    servo=1
+
 init_shoot()
-for i in range(3):
-    shield.adafruitStepperMotor.movetodistance(distances[i])
+for i in range(1):
+    shield.adafruitStepperMotor.movetodistance(DISTANCES2TAGETS_X[i])
+    target=get_target()
+    if target.circle_high.x==target.width/2:
+        shield.adafruitStepperMotor.moveDistance(DISTANCE_FRONT2GUN)
+        move_gun2angle(sensor_ultrasound.median_dist(),target.circle_high.y)
+        shoot()
+        recharge_gun()
+        move_gun2angle(sensor_ultrasound.median_dist(), target.circle_low.y)
+        recharge_gun()
+    else:
+        shield.adafruitStepperMotor.moveDistance(-(target.width/2-105))
+        if target.inv:
+            move_gun2angle(sensor_ultrasound.median_dist(), target.circle_high.y)
+            shoot()
+        else:
+            move_gun2angle(move_gun2angle(sensor_ultrasound.median_dist(), target.circle_low.y))
+            shoot()
+        recharge_gun()
+        shield.adafruitStepperMotor.moveDistance((185-105))
+        if target.inv:
+            move_gun2angle(sensor_ultrasound.median_dist(), target.circle_low.y)
+            shoot()
+        else:
+            move_gun2angle(move_gun2angle(sensor_ultrasound.median_dist(), target.circle_high.y))
+            shoot()
+
+        recharge_gun()
+
+
+
+
+
+
+
+
+
+
 
 
 
