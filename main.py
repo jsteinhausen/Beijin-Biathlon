@@ -172,7 +172,7 @@ def move_gun2angle(distance_z,distance_y):
 
 try:
     while shield.adafruitStepperMotor.distanceTraveled<=3000:
-        if running:
+        try:
             init_shoot()
             for i in range(3):
                 shield.adafruitStepperMotor.movetodistance(DISTANCES2TAGETS_X[i])
@@ -203,6 +203,8 @@ try:
                         shoot()
 
                     recharge_gun()
+        except GPIO.event_detected(button):
+            pass
         if GPIO.event_detected(button):
             print('Button pressed')
             if running:
