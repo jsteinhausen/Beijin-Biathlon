@@ -21,9 +21,13 @@ class Servo:
 
     #speed entre 5 et 10
     def turn_to_angle(self,angle):
-        while True:
+        t = True
+        while t:
             pwnPercent = self.translate(angle, 0.0, 180, 5.0, 10.0)
             self.p.ChangeDutyCycle(pwnPercent)
+            time.sleep(0.18)
+            t = False
+
         #time.sleep(0.5)
         #return pwnPercent
 
@@ -32,16 +36,3 @@ class Servo:
 # ChangeDutyCycle(5) 5 steht fuer pulsweite von 5% von 20ms (f=50Hz)
 # 5% -> 0°
 # 10% -> 90° (maxwert von verwendetem servo)
-
-
-
-
-
-
-#try:
-    #while True:
- #   p.ChangeDutyCycle(pwnPercent)
-  #  time.sleep(0.5)
-#except KeyboardInterrupt:
- #   p.stop()
-  #  GPIO.cleanup()
