@@ -1,10 +1,13 @@
 import RPi.GPIO as GPIO
 import time
 import servo
-
-#servo1=servo.Servo(13,50)
-servo360=servo.Servo360(18,50)
-servo360.turn_to_angle(45)
+try:
+    servo1=servo.Servo(13,50)
+    #servo360=servo.Servo360(18,50)
+    #servo360.turn_to_angle(45)
+    servo1.turn_to_angle(45)
+except KeyboardInterrupt:
+    pass
 GPIO.cleanup()
 #servoPIN = 13
 
