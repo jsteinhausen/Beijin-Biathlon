@@ -47,7 +47,7 @@ class AdafruitDCMotor:
 
     """Using adafruit_motorkit with a stepper motor"""
 class AdafruitStepper:
-    DEFAULT_STEPPER_SPEED=0.001
+    DEFAULT_STEPPER_SPEED=0.005
     stepperSpeed=DEFAULT_STEPPER_SPEED
     distanceTraveled=0
     stepsMade = 0.0
