@@ -36,6 +36,7 @@ running = False
 global i
 
 def cut_out(im,distance):
+    #reglage ultrasound to rail
     distance+=55
     if (1400<=distance<=1600):
         im_out = im[190:360,280:400, :]
