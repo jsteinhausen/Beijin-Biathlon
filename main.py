@@ -110,7 +110,7 @@ def object_detect(image):
                 actual_target=targets[i].get_inv_target()
             return actual_target
         else:
-            return targethelper.Target(400, 300, tolerance, 105, 105, 185, 285)
+            return targethelper.Target(400, 300, tolerance, 150, 110, 150, 290)
 
 
 def take_image():
