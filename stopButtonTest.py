@@ -15,7 +15,7 @@ button=False
 try:
     while True:
         if button:
-            shield.adafruitStepperMotor.moveDistance(100)
+            shield.adafruitStepperMotor.moveDistance(10)
         else:
             shield.adafruitStepperMotor.stepperMotor.release()
 
