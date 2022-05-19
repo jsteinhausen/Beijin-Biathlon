@@ -120,8 +120,8 @@ def take_image():
 def get_target():
     ret, frame= take_image()
     im= cut_out(frame,750)#sensor_ultrasound.median_dist()
-    ret,detected_object =object_detect(im)
-    return detected_object
+
+    return object_detect(im)
 
 def init_shoot():
     while GPIO.input(switch) == 0:
