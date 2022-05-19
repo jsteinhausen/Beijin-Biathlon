@@ -151,10 +151,17 @@ def recharge_gun():
 
 
 def move_gun2angle(distance_z,distance_y):
+    #conversion from mm to m
+    distance_z=750
+    distance_z/=1000
+    distance_y/=1000
     lam=(VELOCITY^2)/(G*distance_z)
     tanA=(distance_y-0.08)/distance_z
     angle=math.atan((lam-math.sqrt((lam^2-1-(2*lam*tanA)))))
-    servo45.turn_to_angle(angle)
+    if angle<=45:
+        servo45.turn_to_angle(angle)
+    else:
+        servo45.turn_to_angle(45)
     time.sleep(1)
 
 try:
