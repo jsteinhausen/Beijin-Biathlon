@@ -6,7 +6,7 @@ mode = GPIO.getmode()
 shield=adafruitMotorshield.AdafruitMotorShield()
 shield.createDCMotor()
 #GPIO12
-switch=12
+switch=4
 GPIO.setup(switch, GPIO.IN,GPIO.PUD_DOWN)
 
 def init_shoot():
