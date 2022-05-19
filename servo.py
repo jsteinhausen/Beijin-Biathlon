@@ -50,15 +50,7 @@ class Servo360:
         pwnPercent360 = self.translate(angle, 0.0, 180, 5.0, 10.0)
         self.p.ChangeDutyCycle(pwnPercent360)
         time.sleep(0.18)
-        #return pwnPercent
-
-    def stop(self):
-        pwnPercent360 = self.translate(90, 0.0, 180, 5.0, 10.0)
-        #self.p.ChangeDutyCycle(pwnPercent360)
         self.p.stop()
-        #GPIO.cleanup()
-
-
 
 # ChangeDutyCycle(5) 5 steht fuer pulsweite von 5% von 20ms (f=50Hz)
 # 5% -> 0°
