@@ -13,7 +13,7 @@ GPIO.add_event_detect(switch, GPIO.RISING)
 
 try:
     while True:
-        shield.adafruitStepperMotor.oneStepForward()
+        shield.adafruitStepperMotor.moveDistance(2)
         print(GPIO.input(switch))
         #if GPIO.event_detected(switch):
             #print('Button pressed')
