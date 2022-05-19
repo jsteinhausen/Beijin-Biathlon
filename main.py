@@ -5,6 +5,8 @@
 import adafruitMotorshield
 import time
 import RPi.GPIO as GPIO
+
+import servo
 import targethelper
 import imutils
 import cv2
@@ -23,6 +25,8 @@ button=6
 GPIO.setup(switch, GPIO.IN, GPIO.PUD_DOWN)
 GPIO.setup(button, GPIO.IN, GPIO.PUD_DOWN)
 GPIO.add_event_detect(switch, GPIO.RISING, bouncetime=200)
+servo45 = servo.Servo45(13, 50)
+servo360 = servo.Servo360(12, 50)
 DISTANCES2TAGETS_X = [1000, 1800, 250]
 DISTANCE_FRONT2CAMERA=100
 DISTANCE_FRONT2GUN=200
@@ -131,13 +135,16 @@ def shooting_release():
     GPIO.cleanup()
 
 def recharge_gun():
-    servo360=1
+    servo45.turn_to_angle(45)
+    time.sleep(1)
+    servo360.turn_to_angle(100)
 
 def move_gun2angle(distance_x,distance_y):
     servo=1
 
 try:
     init_shoot()
+    recharge_gun()
     for i in range(1):
         shield.adafruitStepperMotor.movetodistance(DISTANCES2TAGETS_X[i])
         shield.adafruitStepperMotor.stepperMotor.release()
