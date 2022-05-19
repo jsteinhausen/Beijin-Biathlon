@@ -13,10 +13,20 @@ import numpy as np
 
 
 def cut_out(im,distance):
-    if targethelper.Target.test_cord(140,160,distance):
-        im_out = im[220:380,275:380, :]
+
+    if (1400<=distance<=1600):
+        im_out = im[190:360,280:400, :]
         im_out = im_out[:, :, ::-1]
         return im_out
+    elif (900<=distance<=1100):
+        im_out = im[100:400,230:440, :]
+        im_out = im_out[:, :, ::-1]
+        return im_out
+    elif (650<=distance<=850):
+        im_out = im[0:400, 150:450, :]
+        im_out = im_out[:, :, ::-1]
+        return im_out
+
 
 def cop(im,border):
     im_out = im[border:im.shape[0] - border, border:im.shape[1] - border, :]
