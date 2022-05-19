@@ -3,7 +3,7 @@ import time
 import servo
 
 servo1=servo.Servo(13,50)
-servo1.turn_to_angle_360(100)
+servo1.turn_to_angle_360(90)
 GPIO.cleanup()
 #servoPIN = 13
 
