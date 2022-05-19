@@ -168,7 +168,7 @@ except KeyboardInterrupt:
 #except TypeError:
     #pass
 shield.adafruitDCMotor.stop()
-shield.adafruitStepperMotor.steppper.release()
+shield.adafruitStepperMotor.steppperMotor.release()
 GPIO.cleanup()
 
 
