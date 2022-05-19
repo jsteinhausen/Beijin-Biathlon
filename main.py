@@ -150,7 +150,7 @@ def move_gun2angle(distance_x,distance_y):
 
 try:
     init_shoot()
-    #recharge_gun()
+    recharge_gun()
     #recharge_gun()
     for i in range(1):
         shield.adafruitStepperMotor.movetodistance(DISTANCES2TAGETS_X[i])
