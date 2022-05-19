@@ -18,13 +18,13 @@ class Ultrasound:
         global st, sto
 
     def distance(self):
-        gp.output(16, gp.HIGH)  #initialisation du capteur
+        gp.output(self.pin_out, gp.HIGH)  #initialisation du capteur
         sleep(0.00001)
-        gp.output(16, gp.LOW)
-        while gp.input(15) == 0:
+        gp.output(self.pin_out, gp.LOW)
+        while gp.input(self.pin_in) == 0:
             st = time()         #start time of the impulsion
             # print(st,"\n")
-        while gp.input(15) == 1:
+        while gp.input(self.pin_in) == 1:
             sto = time()        #stop time of the impulsion
             #print(sto)
             tt = sto - st
