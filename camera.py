@@ -6,7 +6,7 @@ cap = cv2.VideoCapture(0)
 
 ret, frame = cap.read()
 if ret:
-	cv2.imwrite('image1.jpg', frame)
+	cv2.imwrite('image2.jpg', frame)
 	print("True")
 
 cap.release()

@@ -15,16 +15,16 @@ def init_shoot():
 
 
 def shoot():
-    shield.adafruitDCMotor.backward()
+    shield.adafruitDCMotor.forward()
     time.sleep(1)
     while GPIO.input(switch) == 0:
         print(GPIO.input(switch))
-        shield.adafruitDCMotor.backward()
+        shield.adafruitDCMotor.forward()
 
     shield.adafruitDCMotor.stop()
 
 def shooting_release():
-    shield.adafruitDCMotor.forward()
+    shield.adafruitDCMotor.backward()
     time.sleep(1)
     GPIO.cleanup()
 
@@ -33,7 +33,7 @@ def shooting_release():
 
 try:
     while GPIO.input(switch)==0:
-        shield.adafruitDCMotor.backward()
+        shield.adafruitDCMotor.forward()
     shield.adafruitDCMotor.stop()
     shoot()
     shooting_release()
