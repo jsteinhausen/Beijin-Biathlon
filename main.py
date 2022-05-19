@@ -109,7 +109,7 @@ def get_target():
 
 def init_shoot():
     while GPIO.input(switch) == 0:
-        shield.adafruitDCMotor.forwardward()
+        shield.adafruitDCMotor.forward()
 
 
 def shoot():
