@@ -47,7 +47,7 @@ class Servo360:
         # speed entre 5 et 10
         def turn_to_angle(self, angle):
             pwnPercent = self.translate(angle, 0.0, 180, 5.0, 10.0)
-            self.p.ChangeDutyCycle(6)
+            self.p.ChangeDutyCycle(10)
             # time.sleep(0.5)
             #return pwnPercent
 
