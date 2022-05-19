@@ -27,7 +27,7 @@ class Servo:
         return pwnPercent
     def turn_to_angle_360(self,angle):
         pwnPercent = self.translate(angle, 0.0, 360, 5.0, 10)
-        self.p.ChangeDutyCycle(7.5)
+        self.p.ChangeDutyCycle(10.0)
         #time.sleep(0.5)
         return pwnPercent
 
