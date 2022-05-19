@@ -31,6 +31,7 @@ DISTANCES2TAGETS_X = [1000, 1800, 250]
 DISTANCE_FRONT2CAMERA=100
 DISTANCE_FRONT2GUN=200
 running = False
+global i
 
 def cut_out(im,distance):
     distance+=55
@@ -112,7 +113,8 @@ def take_image():
 def get_target():
     ret, frame= take_image()
     im= cut_out(frame,sensor_ultrasound.median_dist())
-    cv2.imwrite('image.jpg',im)
+    cv2.imwrite(('image'+str(i)+'.jpg'),im)
+    i+=1
     return object_detect(im)
 
 def init_shoot():
@@ -145,8 +147,8 @@ def move_gun2angle(distance_x,distance_y):
 
 try:
     init_shoot()
-    recharge_gun()
-    recharge_gun()
+    #recharge_gun()
+    #recharge_gun()
     for i in range(1):
         shield.adafruitStepperMotor.movetodistance(DISTANCES2TAGETS_X[i])
         shield.adafruitStepperMotor.stepperMotor.release()
