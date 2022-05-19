@@ -15,7 +15,7 @@ button=False
 try:
     while True:
         if not button:
-            shield.adafruitStepperMotor.moveDistance(2)
+            shield.adafruitStepperMotor.moveDistance(100)
         else:
             shield.adafruitStepperMotor.stepperMotor.release()
         if GPIO.event_detected(switch):
