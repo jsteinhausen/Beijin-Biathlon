@@ -206,7 +206,10 @@ try:
                     recharge_gun()
         if GPIO.event_detected(switch):
             print('Button pressed')
-            running=True
+            if running:
+                running=False
+            else:
+                running=True
 
 
 except KeyboardInterrupt:
