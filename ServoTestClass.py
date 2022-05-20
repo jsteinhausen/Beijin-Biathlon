@@ -1,14 +1,35 @@
 import RPi.GPIO as GPIO
 import time
-import servo
+from gpiozero import Servo
+
 
 try:
-    servo45 = servo.Servo45(13, 50)
-    servo45.turn_to_angle(45)
+    from gpiozero import Servo
+    from time import sleep
+
+    myGPIO = 13
+
+    servo = Servo(myGPIO)
+
+    while True:
+        servo.mid()
+        print("mid")
+        sleep(0.5)
+        servo.min()
+        print("min")
+        sleep(1)
+        servo.mid()
+        print("mid")
+        sleep(0.5)
+        servo.max()
+        print("max")
+        sleep(1)
+    #servo45 = servo.Servo45(13, 50)
+    #servo45.turn_to_angle(45)
     #servo45.p.stop()
 
-    servo360 = servo.Servo360(12, 50)
-    servo360.turn_to_angle(100)
+    #servo360 = servo.Servo360(12, 50)
+    #servo360.turn_to_angle(100)
 except KeyboardInterrupt:
     pass
 GPIO.cleanup()
