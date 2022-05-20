@@ -155,8 +155,10 @@ def shooting_release():
 
 def recharge_gun():
     servo45.turn_to_angle(45)
+    servo45.p.stop()
     time.sleep(2)
     servo360.turn_to_angle(100)
+
 
 
 def move_gun2angle(distance_z,distance_y):
