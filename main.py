@@ -29,7 +29,7 @@ GPIO.setup(led,GPIO.OUT,initial=GPIO.LOW)
 GPIO.add_event_detect(button, GPIO.RISING, bouncetime=200)
 servo45 = servo.Servo45(13, 50)
 servo360 = servo.Servo360(12, 50)
-DISTANCES2TAGETS_X = [1000, 1800, 250]
+DISTANCES2TAGETS_X = [1000, 1800, 2500]
 DISTANCE_FRONT2CAMERA=100
 DISTANCE_FRONT2GUN=200
 VELOCITY=5
@@ -188,6 +188,7 @@ try:
                         shoot()
                         recharge_gun()
                         move_gun2angle(sensor_ultrasound.median_dist(), target.circle_low.y)
+                        shoot()
                         recharge_gun()
                     else:
                         shield.adafruitStepperMotor.moveDistance(-(target.width/2-105))
@@ -229,6 +230,7 @@ try:
             else:
                 running = True
         GPIO.output(led, GPIO.LOW)
+        pass
 
 except KeyboardInterrupt:
     pass
