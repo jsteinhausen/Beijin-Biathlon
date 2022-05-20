@@ -142,11 +142,11 @@ def init_shoot():
 
 def shoot():
     time.sleep(1)
-    #while GPIO.input(switch) == 0:
-        #print(GPIO.input(switch))
-        #shield.adafruitDCMotor.backward()
+    while GPIO.input(switch) == 0:
+        print(GPIO.input(switch))
+        shield.adafruitDCMotor.backward()
 
-    #shield.adafruitDCMotor.stop()
+    shield.adafruitDCMotor.stop()
 
 def shooting_release():
     shield.adafruitDCMotor.backward()
@@ -164,26 +164,42 @@ def recharge_gun():
     time.sleep(2)
     recharge360()
 
-
-
-
 def move_gun2angle(distance_z,distance_y):
-    #conversion from mm to m
-    distance_z/=1000
-    distance_y/=1000
-    lam=(VELOCITY^2)/(G*distance_z)
-    tanA=(distance_y-0.08)/distance_z
-    a=pow(lam,2)-1-(2*lam*tanA)
-    if a>0:
-        b=lam-(math.sqrt(a))
-        angle=math.atan(b)
+    if (1400 <= distance_z <= 1600):
+        if 280<distance_y:
+            servo45.turn_to_angle(17)
+        else:
+            servo45.turn_to_angle(10)
+        time.sleep(1)
+    elif (900 <= distance_z <= 1100):
+        if 280 < distance_y:
+            servo45.turn_to_angle(17)
+        else:
+            servo45.turn_to_angle(10)
+        time.sleep(1)
+    elif (650 <= distance_z <= 850):
+        if 280 < distance_y:
+            servo45.turn_to_angle(17)
+        else:
+            servo45.turn_to_angle(10)
+        time.sleep(1)
     else:
-        angle=5
-    if angle<=45:
-        servo45.turn_to_angle(angle)
-    else:
-        servo45.turn_to_angle(45)
-    time.sleep(1)
+        #conversion from mm to m
+        distance_z/=1000
+        distance_y/=1000
+        lam=(VELOCITY^2)/(G*distance_z)
+        tanA=(distance_y-0.08)/distance_z
+        a=pow(lam,2)-1-(2*lam*tanA)
+        if a>0:
+           b=lam-(math.sqrt(a))
+           angle=math.atan(b)
+        else:
+            angle=5
+        if angle<=45:
+            servo45.turn_to_angle(angle)
+        else:
+            servo45.turn_to_angle(45)
+        time.sleep(1)
 
 try:
     while shield.adafruitStepperMotor.distanceTraveled<3000 and not finished:
