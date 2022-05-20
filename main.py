@@ -22,8 +22,10 @@ shield.createStepperMotor(1.8,65,0.1)
 sensor_ultrasound=ultrasound.Ultrasound(22,23)
 switch=4
 button=6
+led=5
 GPIO.setup(switch, GPIO.IN, GPIO.PUD_DOWN)
 GPIO.setup(button, GPIO.IN, GPIO.PUD_DOWN)
+GPIO.setup(led,GPIO.OUT,inital=GPIO.LOW)
 GPIO.add_event_detect(button, GPIO.RISING, bouncetime=200)
 servo45 = servo.Servo45(13, 50)
 servo360 = servo.Servo360(12, 50)
@@ -171,52 +173,70 @@ def move_gun2angle(distance_z,distance_y):
     time.sleep(1)
 
 try:
-    while shield.adafruitStepperMotor.distanceTraveled<=3000:
-        init_shoot()
-        for i in range(3):
-            if running:
-                shield.adafruitStepperMotor.movetodistance(DISTANCES2TAGETS_X[i])
-                shield.adafruitStepperMotor.stepperMotor.release()
-                target=get_target()
-                if target.circle_high.x==target.width/2:
-                    shield.adafruitStepperMotor.moveDistance(DISTANCE_FRONT2GUN)
-                    move_gun2angle(sensor_ultrasound.median_dist(),target.circle_high.y)
-                    shoot()
-                    recharge_gun()
-                    move_gun2angle(sensor_ultrasound.median_dist(), target.circle_low.y)
-                    recharge_gun()
-                else:
-                    shield.adafruitStepperMotor.moveDistance(-(target.width/2-105))
-                    if target.inv:
-                        move_gun2angle(sensor_ultrasound.median_dist(), target.circle_high.y)
+    while shield.adafruitStepperMotor.distanceTraveled<3000:
+        if running:
+            GPIO.output(led,GPIO.HIGH)
+            init_shoot()
+            for i in range(3):
+                if running:
+                    shield.adafruitStepperMotor.movetodistance(DISTANCES2TAGETS_X[i])
+                    shield.adafruitStepperMotor.stepperMotor.release()
+                    target=get_target()
+                    if target.circle_high.x==target.width/2:
+                        shield.adafruitStepperMotor.moveDistance(DISTANCE_FRONT2GUN)
+                        move_gun2angle(sensor_ultrasound.median_dist(),target.circle_high.y)
                         shoot()
-                    else:
-                        move_gun2angle(move_gun2angle(sensor_ultrasound.median_dist(), target.circle_low.y))
-                        shoot()
-                    recharge_gun()
-                    shield.adafruitStepperMotor.moveDistance((185-105))
-                    if target.inv:
+                        recharge_gun()
                         move_gun2angle(sensor_ultrasound.median_dist(), target.circle_low.y)
-                        shoot()
+                        recharge_gun()
                     else:
-                        move_gun2angle(move_gun2angle(sensor_ultrasound.median_dist(), target.circle_high.y))
-                        shoot()
-                    recharge_gun()
+                        shield.adafruitStepperMotor.moveDistance(-(target.width/2-105))
+                        if target.inv:
+                            move_gun2angle(sensor_ultrasound.median_dist(), target.circle_high.y)
+                            shoot()
+                        else:
+                            move_gun2angle(move_gun2angle(sensor_ultrasound.median_dist(), target.circle_low.y))
+                            shoot()
+                        recharge_gun()
+                        shield.adafruitStepperMotor.moveDistance((185-105))
+                        if target.inv:
+                            move_gun2angle(sensor_ultrasound.median_dist(), target.circle_low.y)
+                            shoot()
+                        else:
+                            move_gun2angle(move_gun2angle(sensor_ultrasound.median_dist(), target.circle_high.y))
+                            shoot()
+                        recharge_gun()
+                else:
+                    pass
+                if GPIO.event_detected(button):
+                    print('Button pressed')
+                    if running:
+                        running=False
+                    else:
+                        running=True
+            if GPIO.event_detected(button):
+                print('Button pressed')
+                if running:
+                    running = False
+                else:
+                    running = True
             else:
                 pass
             if GPIO.event_detected(button):
                 print('Button pressed')
                 if running:
-                    running=False
+                    running = False
                 else:
-                    running=True
+                    running = True
+            GPIO.output(led, GPIO.LOW)
 
 except KeyboardInterrupt:
     pass
 #except TypeError:
     #pass
-shield.adafruitDCMotor.stop()
-shield.adafruitStepperMotor.steppperMotor.release()
+shooting_release()
+shield.adafruitDCMotor.release()
+shield.adafruitStepperMotor.stepperMotor.release()
 GPIO.cleanup()
 
 
