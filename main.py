@@ -155,7 +155,7 @@ def shooting_release():
 
 def recharge_gun():
     servo45.turn_to_angle(45)
-    time.sleep(5)
+    time.sleep(2)
     servo360.turn_to_angle(100)
 
 
@@ -211,7 +211,7 @@ try:
                         shoot()
                         recharge_gun()
                     else:
-                        shield.adafruitStepperMotor.moveDistance(-(target.width/2-105))
+                        shield.adafruitStepperMotor.moveDistance(-(target.width/2-105)+DISTANCE_FRONT2GUN)
                         if target.inv:
                             move_gun2angle(sensor_ultrasound.median_dist(), target.circle_high.y)
                             shoot()
