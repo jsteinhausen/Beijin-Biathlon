@@ -223,7 +223,8 @@ try:
                             shoot()
                         recharge_gun()
                 else:
-                    finished=True
+                    if not running:
+                        finished=True
         else:
             pass
 
