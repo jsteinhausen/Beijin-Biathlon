@@ -88,14 +88,17 @@ def object_detect(image):
         # shape using only the contour
         # M containing all non zero values
         M = cv2.moments(c)
-        cX = int((M["m10"] / M["m00"]))
-        cY = int((M["m01"] / M["m00"]))
+        notdetected=True
+        if not M["m00"]==0:
+            cX = int((M["m10"] / M["m00"]))
+            cY = int((M["m01"] / M["m00"]))
+            notdetected=False
         # multiply the contour (x, y)-coordinates by the resize ratio,
         c = c.astype("float")
         c *= ratio
         c = c.astype("int")
         shape = sd.detect(c)
-        if shape == 'circle':
+        if shape == 'circle' and not notdetected:
             circles.append(targethelper.Circle(cX, cY))
         # then draw the contours and the name of the shape on the image
     # x 300 y 400
@@ -105,15 +108,18 @@ def object_detect(image):
 
     # small x 105 (195)j y 105 (195)j
 
-    for i in range(len(targets)):
-        ret=False
-        if targets[i].is_this_targent(circles)[0]:
-            actual_target=targets[i]
-            if targets[i].is_this_targent(circles)[1]:
-                actual_target=targets[i].get_inv_target()
-            return actual_target
-        else:
-            return targethelper.Target(400, 300, tolerance, 150, 110, 150, 290)
+    if not notdetected:
+        for i in range(len(targets)):
+            ret=False
+            if targets[i].is_this_targent(circles)[0]:
+                actual_target=targets[i]
+                if targets[i].is_this_targent(circles)[1]:
+                    actual_target=targets[i].get_inv_target()
+                return actual_target
+            else:
+                return targethelper.Target(400, 300, tolerance, 150, 110, 150, 290)
+
+    else: return targethelper.Target(400, 300, tolerance, 150, 110, 150, 290)
 
 
 def take_image():
@@ -193,7 +199,7 @@ try:
                     else:
                         running=True
                 if running:
-                    shield.adafruitStepperMotor.movetodistance(DISTANCES2TAGETS_X[i])
+                    shield.adafruitStepperMotor.movetodistance(DISTANCES2TAGETS_X[i]+100)
                     shield.adafruitStepperMotor.stepperMotor.release()
                     target=get_target()
                     if target.circle_high.x==target.width/2:
