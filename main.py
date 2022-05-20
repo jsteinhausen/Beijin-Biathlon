@@ -222,6 +222,7 @@ try:
                             move_gun2angle(move_gun2angle(sensor_ultrasound.median_dist(), target.circle_high.y))
                             shoot()
                         recharge_gun()
+                    finished=True
                 else:
                     if not running:
                         finished=True
