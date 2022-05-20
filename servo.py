@@ -20,7 +20,6 @@ class Servo45:
 
     #speed entre 5 et 10
     def turn_to_angle(self,angle):
-
         pwnPercent = self.translate((45-angle), 0.0, 45, 5.0, 10)
         self.p.ChangeDutyCycle(pwnPercent)
         #time.sleep(0.5)
@@ -31,7 +30,7 @@ class Servo360:
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(PIN, GPIO.OUT)
         self.p = GPIO.PWM(PIN, PWM)
-
+        self.p.start(2.0)
 
     def translate(self,value, leftMin, leftMax, rightMin, rightMax):
         # Figure out how 'wide' each range is
@@ -46,11 +45,13 @@ class Servo360:
 
     #speed entre 5 et 10
     def turn_to_angle(self,angle):
-        self.p.start(2.0)
         pwnPercent360 = self.translate(angle, 0.0, 180, 5.0, 10.0)
         self.p.ChangeDutyCycle(pwnPercent360)
-        time.sleep(0.18)
+        time.sleep(0.10)
         self.p.stop()
+        #return pwnPercent
+
+
 
 # ChangeDutyCycle(5) 5 steht fuer pulsweite von 5% von 20ms (f=50Hz)
 # 5% -> 0°
