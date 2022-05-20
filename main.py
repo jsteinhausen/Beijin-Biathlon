@@ -34,7 +34,7 @@ DISTANCE_FRONT2CAMERA=100
 DISTANCE_FRONT2GUN=200
 VELOCITY=5
 G=9.81
-running = True
+running = False
 finished = False
 global i
 
