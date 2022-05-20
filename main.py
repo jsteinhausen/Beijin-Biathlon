@@ -215,12 +215,6 @@ try:
                         running=False
                     else:
                         running=True
-            if GPIO.event_detected(button):
-                print('Button pressed')
-                if running:
-                    running = False
-                else:
-                    running = True
         else:
             pass
         if GPIO.event_detected(button):
