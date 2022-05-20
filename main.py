@@ -179,6 +179,7 @@ try:
             print('Button pressed')
             if running:
                 running = False
+                finished=True
             else:
                 running = True
         GPIO.output(led, GPIO.LOW)
@@ -191,6 +192,7 @@ try:
                     print('Button pressed')
                     if running:
                         running=False
+                        finished = True
                     else:
                         running=True
                 if running:
@@ -225,7 +227,8 @@ try:
                 else:
                     pass
         else:
-            finished=True
+            pass
+
 
 
 except KeyboardInterrupt:
