@@ -215,6 +215,7 @@ try:
                         running=False
                     else:
                         running=True
+                pass
         else:
             pass
         if GPIO.event_detected(button):
