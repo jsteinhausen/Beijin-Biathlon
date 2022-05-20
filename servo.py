@@ -2,6 +2,7 @@ import RPi.GPIO as GPIO
 import time
 class Servo45:
     def __init__(self,PIN,PWM):
+        self.PIN=PIN
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(PIN, GPIO.OUT)
         self.p = GPIO.PWM(PIN, PWM)
@@ -22,6 +23,8 @@ class Servo45:
     def turn_to_angle(self,angle):
         pwnPercent = self.translate((45-angle), 0.0, 45, 5.0, 10)
         self.p.ChangeDutyCycle(pwnPercent)
+        GPIO.output(self.PIN,GPIO.LOW)
+
 
         #return pwnPercent
 
