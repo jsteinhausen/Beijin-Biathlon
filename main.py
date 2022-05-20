@@ -153,10 +153,17 @@ def shooting_release():
     time.sleep(1)
     GPIO.cleanup()
 
-def recharge_gun():
+def recharge45():
     servo45.turn_to_angle(45)
-    time.sleep(2)
+
+def recharge360():
     servo360.turn_to_angle(100)
+
+def recharge_gun():
+    recharge45()
+    time.sleep(2)
+    recharge360()
+
 
 
 
