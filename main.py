@@ -25,7 +25,7 @@ button=6
 led=5
 GPIO.setup(switch, GPIO.IN, GPIO.PUD_DOWN)
 GPIO.setup(button, GPIO.IN, GPIO.PUD_DOWN)
-GPIO.setup(led,GPIO.OUT,inital=GPIO.LOW)
+GPIO.setup(led,GPIO.OUT,initial=GPIO.LOW)
 GPIO.add_event_detect(button, GPIO.RISING, bouncetime=200)
 servo45 = servo.Servo45(13, 50)
 servo360 = servo.Servo360(12, 50)
