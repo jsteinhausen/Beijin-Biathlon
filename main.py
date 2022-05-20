@@ -135,7 +135,6 @@ def init_shoot():
     shield.adafruitDCMotor.stop()
 
 def shoot():
-    #shield.adafruitDCMotor.forward()
     time.sleep(1)
     #while GPIO.input(switch) == 0:
         #print(GPIO.input(switch))
@@ -187,7 +186,6 @@ try:
             GPIO.output(led,GPIO.HIGH)
             init_shoot()
             for i in range(3):
-
                 if GPIO.event_detected(button):
                     print('Button pressed')
                     if running:
