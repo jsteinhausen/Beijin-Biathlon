@@ -235,6 +235,7 @@ except KeyboardInterrupt:
     pass
 #except TypeError:
     #pass
+servo45.turn_to_angle(0)
 shooting_release()
 shield.adafruitDCMotor.release()
 shield.adafruitStepperMotor.stepperMotor.release()
