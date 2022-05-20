@@ -34,7 +34,8 @@ DISTANCE_FRONT2CAMERA=100
 DISTANCE_FRONT2GUN=200
 VELOCITY=5
 G=9.81
-running = False
+running = True
+finished = False
 global i
 
 def cut_out(im,distance):
@@ -173,7 +174,7 @@ def move_gun2angle(distance_z,distance_y):
     time.sleep(1)
 
 try:
-    while shield.adafruitStepperMotor.distanceTraveled<3000:
+    while shield.adafruitStepperMotor.distanceTraveled<3000 and not finished:
         if GPIO.event_detected(button):
             print('Button pressed')
             if running:
@@ -224,7 +225,7 @@ try:
                 else:
                     pass
         else:
-            pass
+            finished=True
 
 
 except KeyboardInterrupt:
