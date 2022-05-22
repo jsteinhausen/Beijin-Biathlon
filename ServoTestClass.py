@@ -4,8 +4,7 @@ from gpiozero import Servo
 
 
 try:
-    from gpiozero import Servo
-    from time import sleep
+
 
     myGPIO = 13
 
